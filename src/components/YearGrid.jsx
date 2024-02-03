@@ -4,8 +4,7 @@ import MonthGrid from './MonthGrid';
 /**
  * Component to render a a whole Year's Grid
  */
-const YearGrid = () => {
-    const year = 2021;
+const YearGrid = ({year}) => {
     //Populates the monthly grid in a year
     const populateMonthlyGrid = () => {
         const grid = [];

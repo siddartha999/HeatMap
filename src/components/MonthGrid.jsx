@@ -1,6 +1,5 @@
 import React from 'react';
 import Grid from './Grid';
-import moment from 'moment';
 import { daysInMonth, monthNames } from '../utils/Utils';
 
 /**
