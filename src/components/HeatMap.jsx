@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import MonthGrid from './MonthGrid';
 
 const HeatMap = () => {
     return (
-        <div>
-            HeatMap
+        <div id='HeatMap'>
+           <MonthGrid />
         </div>
     );
 };

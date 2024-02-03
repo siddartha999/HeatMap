@@ -1,5 +1,5 @@
 import './App.css'
-import HeatMap from './HeatMap'
+import HeatMap from './components/HeatMap'
 
 function App() {
 
