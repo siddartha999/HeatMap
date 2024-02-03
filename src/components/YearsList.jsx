@@ -1,5 +1,6 @@
-import { MenuItem, Select } from '@mui/material';
-import React, { useState } from 'react';
+import Select from '@mui/joy/Select';
+import Option from '@mui/joy/Option';
+import React from 'react';
 
 /**
  * Component to display a dropdown of Current + last X years
@@ -8,15 +9,15 @@ const YearsList = ({chosenYear, setChosenYear}) => {
     const currentYear = new Date().getFullYear();
 
     //Handler to react to the change in the selection of a year
-    const handleYearChange = (event) => {
-        setChosenYear(event.target.value);
+    const handleYearChange = (event, newValue) => {
+        setChosenYear(newValue);
     };
 
     //Populates a list of a previous X years
     const populateListOfPreviousYears = () => {
         const previousYears = [];
         let count = 10;
-        for(let index = 1; index < count; index++) {
+        for(let index = 0; index < count; index++) {
             previousYears.push(currentYear - index);
         }
         return previousYears;
@@ -24,10 +25,9 @@ const YearsList = ({chosenYear, setChosenYear}) => {
 
     return (
         <div id='YearsList'>
-            <Select  labelId="demo-simple-select-standard-label" id="demo-simple-select-standard" value={chosenYear} onChange={handleYearChange}>
-                <MenuItem value={currentYear}>Current</MenuItem>
+            <Select variant='outlined' value={chosenYear} onChange={handleYearChange}>
                 {
-                    populateListOfPreviousYears().map((year) => <MenuItem value={year}>{year}</MenuItem>)
+                    populateListOfPreviousYears().map((year) => <Option value={year}>{year}</Option>)
                 }
             </Select>
         </div>

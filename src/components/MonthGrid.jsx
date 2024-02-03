@@ -5,7 +5,7 @@ import { daysInMonth, monthNames } from '../utils/Utils';
 /**
  * Component to render a full month's grid
  */
-const MonthGrid = ({year, month}) => {
+const MonthGrid = ({year, month, color}) => {
     const yearAndMonth = `${year}-${month >= 10 ? month : '0' + month}`;
     const days = daysInMonth(month, year);
     console.log(yearAndMonth, days);
@@ -16,7 +16,7 @@ const MonthGrid = ({year, month}) => {
         for(let idx = 1; idx <= days; idx++) {
             grid.push(
                 <div className='p-[0.75px] inline-block'>
-                    <Grid />
+                    <Grid color={color} />
                 </div>
             );
         }
