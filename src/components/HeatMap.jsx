@@ -8,7 +8,6 @@ const HeatMap = ({data}) => {
     const currentYear = new Date().getFullYear();
     const [chosenYear, setChosenYear] = useState(currentYear);
     const [chosenColor, setChosenColor] = useState(blueTheme);
-    const [yearlyData, setYearlyData] = useState([]);
     const [countForAMonthAndDay, setCountForAMonthAndDay] = useState(new Map());
     const quartileObj = useRef(({
         first: 0,
@@ -34,14 +33,12 @@ const HeatMap = ({data}) => {
         }
 
         temp.sort((a, b) => a.count - b.count);
-        setYearlyData(temp);
         setCountForAMonthAndDay(tempMap);
 
         quartileObj.current.fourth = temp[Math.ceil((temp.length) * 3 ) / 4]?.count;
         quartileObj.current.third = temp[Math.ceil((temp.length) * 2 ) / 4]?.count;
         quartileObj.current.second = temp[Math.ceil((temp.length) * 1 ) / 4]?.count;
         quartileObj.current.first = temp[0]?.count;
-        console.log(temp, quartileObj.current);
     }, [data, chosenYear]);
 
     return (

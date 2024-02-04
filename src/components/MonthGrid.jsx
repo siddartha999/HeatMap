@@ -13,9 +13,9 @@ const MonthGrid = ({year, month, color, countForAMonthAndDay, quartileObj}) => {
     //Generates the quarter for a given day of the year
     const generateQuarter = (count) => {
         if(count >= quartileObj.current.fourth) return 4;
-        if(count >= quartileObj.current.third) return 3;
+        if(count >= quartileObj.current.third)  return 3;
         if(count >= quartileObj.current.second) return 2;
-        if(count >= quartileObj.current.first) return 1;
+        if(count >= quartileObj.current.first)  return 1;
         return 0;
     };
 
@@ -28,7 +28,7 @@ const MonthGrid = ({year, month, color, countForAMonthAndDay, quartileObj}) => {
             const quarter = generateQuarter(count);
 
             grid.push(
-                <div className='p-[0.75px] inline-block'>
+                <div className='p-[0.75px] inline-block' key={formattedDay}>
                     <Grid color={color} quarter={quarter} count={count} year={year} monthName={monthNames[month - 1]} day={formattedDay} />
                 </div>
             );
@@ -37,14 +37,14 @@ const MonthGrid = ({year, month, color, countForAMonthAndDay, quartileObj}) => {
     };
     
     return (
-        <div id={`MonthGrid-${yearAndMonth}`} key={yearAndMonth} className='w-[87.5px]'>
+        <div id={`MonthGrid-${yearAndMonth}`} className='w-[87.5px]'>
             <div className={`grid grid-rows-7 grid-cols-5 grid-flow-col`}>
                 {
                     constructGridArray()            
                 }
             </div>
             {
-                <div id='Month-name' className='text-center font-sm'>
+                <div id='Month-name' className='text-center'>
                     {monthNames[month - 1]}
                 </div>
             }

@@ -8,9 +8,9 @@ const YearGrid = ({year, color, countForAMonthAndDay, quartileObj}) => {
     //Populates the monthly grid in a year
     const populateMonthlyGrid = () => {
         const grid = [];
-        for(let idx = 1; idx <= 12; idx++) {
+        for(let month = 1; month <= 12; month++) {
             grid.push(
-                <MonthGrid year={year} month={idx} color={color} countForAMonthAndDay={countForAMonthAndDay} quartileObj={quartileObj} />
+                <MonthGrid key={year + "-" + month} year={year} month={month} color={color} countForAMonthAndDay={countForAMonthAndDay} quartileObj={quartileObj} />
             );
         }
         return grid;

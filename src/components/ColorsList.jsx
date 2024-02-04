@@ -16,7 +16,7 @@ const ColorsList = ({chosenColor, setChosenColor }) => {
         <div id='ColorsList'>
             <Select variant='outlined' value={chosenColor} onChange={handleColorChange}>
                 {
-                    themes.map((color) => <Option value={color}>{color}</Option>)
+                    themes.map((color) => <Option key={color} value={color}>{color}</Option>)
                 }
             </Select>
         </div>

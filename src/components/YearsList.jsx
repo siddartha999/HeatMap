@@ -27,7 +27,7 @@ const YearsList = ({chosenYear, setChosenYear}) => {
         <div id='YearsList'>
             <Select variant='outlined' value={chosenYear} onChange={handleYearChange}>
                 {
-                    populateListOfPreviousYears().map((year) => <Option value={year}>{year}</Option>)
+                    populateListOfPreviousYears().map((year) => <Option key={year} value={year}>{year}</Option>)
                 }
             </Select>
         </div>
