@@ -4,13 +4,13 @@ import MonthGrid from './MonthGrid';
 /**
  * Component to render a a whole Year's Grid
  */
-const YearGrid = ({year, color}) => {
+const YearGrid = ({year, color, countForAMonthAndDay, quartileObj}) => {
     //Populates the monthly grid in a year
     const populateMonthlyGrid = () => {
         const grid = [];
         for(let idx = 1; idx <= 12; idx++) {
             grid.push(
-                <MonthGrid year={year} month={idx} color={color} />
+                <MonthGrid year={year} month={idx} color={color} countForAMonthAndDay={countForAMonthAndDay} quartileObj={quartileObj} />
             );
         }
         return grid;

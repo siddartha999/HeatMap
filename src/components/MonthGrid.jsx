@@ -5,18 +5,30 @@ import { daysInMonth, monthNames } from '../utils/Utils';
 /**
  * Component to render a full month's grid
  */
-const MonthGrid = ({year, month, color}) => {
-    const yearAndMonth = `${year}-${month >= 10 ? month : '0' + month}`;
+const MonthGrid = ({year, month, color, countForAMonthAndDay, quartileObj}) => {
+    const formattedMonth = month >= 10 ? month : '0' + month;
+    const yearAndMonth = `${year}-${formattedMonth}`;
     const days = daysInMonth(month, year);
-    console.log(yearAndMonth, days);
+
+    //Generates the quarter for a given day of the year
+    const generateQuarter = (count) => {
+        if(count >= quartileObj.current.fourth) return 4;
+        if(count >= quartileObj.current.third) return 3;
+        if(count >= quartileObj.current.second) return 2;
+        if(count >= quartileObj.current.first) return 1;
+        return 0;
+    };
 
     //Constructs the Grid array for the given days in a month
     const constructGridArray = () => {
         const grid = [];
-        for(let idx = 1; idx <= days; idx++) {
+        for(let day = 1; day <= days; day++) {
+            const formattedDay = day >= 10 ? day : '0' + day;
+            const quarter = generateQuarter(countForAMonthAndDay.get(formattedMonth + "-" + formattedDay));
+            
             grid.push(
                 <div className='p-[0.75px] inline-block'>
-                    <Grid color={color} />
+                    <Grid color={color} quarter={quarter}  />
                 </div>
             );
         }
