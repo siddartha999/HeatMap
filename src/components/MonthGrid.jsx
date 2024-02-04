@@ -24,11 +24,12 @@ const MonthGrid = ({year, month, color, countForAMonthAndDay, quartileObj}) => {
         const grid = [];
         for(let day = 1; day <= days; day++) {
             const formattedDay = day >= 10 ? day : '0' + day;
-            const quarter = generateQuarter(countForAMonthAndDay.get(formattedMonth + "-" + formattedDay));
-            
+            const count = countForAMonthAndDay.get(formattedMonth + "-" + formattedDay);
+            const quarter = generateQuarter(count);
+
             grid.push(
                 <div className='p-[0.75px] inline-block'>
-                    <Grid color={color} quarter={quarter}  />
+                    <Grid color={color} quarter={quarter} count={count} year={year} monthName={monthNames[month - 1]} day={formattedDay} />
                 </div>
             );
         }
